@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_food.dart';
 
 class ShoppingListPage extends StatefulWidget {
   @override
@@ -22,17 +23,13 @@ class _ShoppingListState extends State<ShoppingListPage> {
         title: Text("Shopping List"),
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
-        ),
+        child: Text("Hello World")
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementItemCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => AddFoodPage()));
+        },
+        child: Icon(Icons.add)
       ),
     );
   }
