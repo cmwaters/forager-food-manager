@@ -27,9 +27,8 @@ class FridgeItem extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 subtitle: Text('expiry date: ${itemsList[index].expiryDate.day}.${itemsList[index].expiryDate.month}.',
-                    textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontStyle: FontStyle.italic, fontWeight: FontWeight.bold, fontSize: 20)),
+                    style: TextStyle(fontStyle: FontStyle.italic,)),
               ),
         ),
         onDismissed: (DismissDirection dir){

@@ -15,7 +15,7 @@ class FridgePage extends StatefulWidget {
 
 class _FridgePageState extends State<FridgePage> {
   static DateTime time= new DateTime.now();
-  List<Item> items=[(new Item(id: "5045",name: "milk",expiryDate: time.add((new Duration(days: 60))))),(new Item(id: "5555",name: "eggs",expiryDate: time.add((new Duration(days: 30))))),(new Item(id: "01",name: "water",expiryDate: time.add((new Duration(days: 15))))) ];
+  List<Item> items=[(new Item(id: "5045",name: "Milk",expiryDate: time.add((new Duration(days: 60))))),(new Item(id: "5555",name: "Eggs",expiryDate: time.add((new Duration(days: 30))))),(new Item(id: "01",name: "Water",expiryDate: time.add((new Duration(days: 15))))) ];
 
   selectDate(BuildContext context){
     return prefix0.Alert(
@@ -30,6 +30,18 @@ class _FridgePageState extends State<FridgePage> {
     )
         ]
     ).show();
+  }
+
+  String _value = '';
+
+  Future _selectDate() async {
+    DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime(2019),
+        lastDate: new DateTime(2021)
+    );
+    if(picked != null) setState(() => _value = picked.toString());
   }
 
   @override
@@ -64,7 +76,7 @@ class _FridgePageState extends State<FridgePage> {
                       //TODO: add item to shopping list
                       print("add item ${items[index].name} to shopping list");
                     } else if(action=="selectDate"){
-                      selectDate(context);
+                      _selectDate();
                     }
                   });
 
