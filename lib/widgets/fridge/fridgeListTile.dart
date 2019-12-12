@@ -46,12 +46,18 @@ class FridgeItem extends StatelessWidget {
         },
        background: Container(
          color: Colors.green,
-         child: Icon(Icons.remove),
+         child: Padding(
+           padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 20),
+           child:Icon(Icons.remove),
+         ),
          alignment: Alignment.centerLeft,
        ),
        secondaryBackground: Container(
          color: Colors.blue,
-         child: Icon(Icons.add_shopping_cart),
+         child: Padding(
+           padding: EdgeInsets.symmetric( vertical: 0.0 , horizontal: 20),
+           child: Icon(Icons.add_shopping_cart),
+         ),
          alignment: Alignment.centerRight,
        ),
       ),

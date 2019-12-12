@@ -35,6 +35,7 @@ class _FridgePageState extends State<FridgePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawerScrimColor: Colors.black,
       appBar: AppBar(
         title: Text("Fridge"),
         actions: <Widget>[
