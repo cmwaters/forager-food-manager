@@ -27,7 +27,7 @@ class _ShoppingListState extends State<ShoppingListPage> {
         title: Text("Shopping List"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.arrow_forward),
+            icon: Icon(Icons.shopping_basket),
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => StorePage()));
             },
