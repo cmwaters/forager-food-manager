@@ -6,12 +6,23 @@ class AddFoodPage extends StatefulWidget {
 }
 
 class _AddFoodState extends State<AddFoodPage> {
+  bool _isClicked = false;
   int _foodCounter = 0;
   var foods = ['Apples', 'Bananas', 'Carrots', 'Oranges', 'Pears'];
 
   void _incrementFoodCounter() {
     setState(() {
       _foodCounter++;
+    });
+  }
+
+  var choice = [];
+
+  var clicked = [false, false, false, false, false];
+
+  void _handleTap(int index) {
+    setState(() {
+      clicked[index] = !clicked[index];
     });
   }
 
@@ -24,7 +35,7 @@ class _AddFoodState extends State<AddFoodPage> {
           IconButton(
             icon: Icon(Icons.done),
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pop(context, choice);
             },
           )
         ],
@@ -33,18 +44,20 @@ class _AddFoodState extends State<AddFoodPage> {
         itemCount: foods.length.toInt(),
         gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (BuildContext context, int index) {
-          return new GestureDetector(
+          return new InkWell(
             child: new Card(
               elevation: 5.0,
               child: new Container(
                 alignment: Alignment.center,
                 child: new Text(foods[index]),
+                decoration: BoxDecoration(
+                  color: clicked[index] ? Colors.black12 : Colors.white,
+                ),
               ),
             ),
             onTap: () {
-              showDialog(
-                child: Text("hi")
-              );
+              _handleTap(index);
+              choice.contains(foods[index]) ? choice.remove(foods[index]) : choice.add(foods[index]);
             },
           );
         }
