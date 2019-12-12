@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forager/screens/grocery_store_list.dart';
 import 'add_food.dart';
 
 class ShoppingListPage extends StatefulWidget {
@@ -16,8 +17,6 @@ class _ShoppingListState extends State<ShoppingListPage> {
     });
   }
 
-
-
   var choice = [];
 
 
@@ -26,6 +25,14 @@ class _ShoppingListState extends State<ShoppingListPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Shopping List"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.arrow_forward),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => StorePage()));
+            },
+          )
+        ],
       ),
       body: GridView.builder(
           itemCount: choice.length.toInt(),
