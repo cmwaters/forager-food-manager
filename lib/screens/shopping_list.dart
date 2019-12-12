@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_food.dart';
 
 class ShoppingListPage extends StatefulWidget {
   @override
@@ -6,6 +7,7 @@ class ShoppingListPage extends StatefulWidget {
 }
 
 class _ShoppingListState extends State<ShoppingListPage> {
+
   int _itemsCount = 0;
 
   void _incrementItemCounter() {
@@ -15,25 +17,51 @@ class _ShoppingListState extends State<ShoppingListPage> {
   }
 
 
+
+  var choice = [];
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Shopping List"),
       ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            // Navigate back to first route when tapped.
-          },
-          child: Text('Go back!'),
-        ),
+      body: GridView.builder(
+          itemCount: choice.length.toInt(),
+          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          itemBuilder: (BuildContext context, int index) {
+            return new GestureDetector(
+              child: new Card(
+                elevation: 5.0,
+                child: new Container(
+                  alignment: Alignment.center,
+                  child: new Text(choice[index]),
+                ),
+              ),
+            );
+          }
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementItemCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+        onPressed: () {
+          _navigateAndDisplaySelection(context);
+        },
+        child: Icon(Icons.add)
       ),
     );
+  }
+
+  _navigateAndDisplaySelection(BuildContext context) async {
+    // Navigator.push returns a Future that completes after calling
+    // Navigator.pop on the Selection Screen.
+    final result = await Navigator.push(
+      context,
+      // Create the SelectionScreen in the next step.
+      MaterialPageRoute(builder: (context) => AddFoodPage()),
+    );
+
+    setState(() {
+      choice = result;
+    });
   }
 }
