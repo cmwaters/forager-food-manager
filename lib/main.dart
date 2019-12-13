@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'screens/home_screen.dart';
-import 'screens/fridge.dart';
+import 'screens/supermarket_map.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: FridgePage(),
+      home: SupermarketMap(),
     );
   }
 }
